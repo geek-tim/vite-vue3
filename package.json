@@ -8,7 +8,9 @@
         "build": "vue-tsc && vite build",
         "preview": "vite preview",
         "prettier": "prettier --write .",
-        "lint": "eslint  './src/**/*.{js,jsx,vue,ts,tsx}' --fix"
+        "lint": "eslint  './src/**/*.{js,jsx,vue,ts,tsx}' --fix",
+        "commit:comment": "引导设置规范化的提交信息",
+        "commit":"git-cz"
     },
     "dependencies": {
         "pinia": "^2.1.7",
@@ -45,5 +47,13 @@
             "eslint --fix",
             "prettier --write"
         ]
-    }
+    },
+    "config": {
+      "commitizen": {
+        "path": "node_modules/cz-customizable"
+      },
+      "cz-customizable":{
+        "config":"./.cz-config.cjs"
+      }
+    }    
 }
