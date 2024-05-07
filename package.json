@@ -10,7 +10,8 @@
         "prettier": "prettier --write .",
         "lint": "eslint  './src/**/*.{js,jsx,vue,ts,tsx}' --fix",
         "commit:comment": "引导设置规范化的提交信息",
-        "commit":"git-cz"
+        "commit": "git-cz",
+        "prepare": "husky"
     },
     "dependencies": {
         "pinia": "^2.1.7",
@@ -44,16 +45,16 @@
     },
     "lint-staged": {
         "src/**/*.{ts,js,jsx,tsx,vue}": [
-            "eslint --fix",
-            "prettier --write"
+            "npm run lint",
+            "npm run prettier"
         ]
     },
     "config": {
-      "commitizen": {
-        "path": "node_modules/cz-customizable"
-      },
-      "cz-customizable":{
-        "config":"./.cz-config.cjs"
-      }
-    }    
+        "commitizen": {
+            "path": "node_modules/cz-customizable"
+        },
+        "cz-customizable": {
+            "config": "./.cz-config.cjs"
+        }
+    }
 }

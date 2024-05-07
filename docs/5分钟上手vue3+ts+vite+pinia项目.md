@@ -1,3 +1,21 @@
+### 前言 —— 前端工程化
+
+前端工程化是一种将前端开发流程系统化、规范化和自动化的方法，旨在提高前端开发的效率、可维护性和可扩展性。它涵盖了许多方面，包括项目结构、代码质量、自动化工具、性能优化等，以确保前端开发团队能够更高效地协作和交付高质量的前端应用程序。
+
+以下是前端工程化的一些关键概念和实践：
+
+-   项目结构：定义清晰的项目目录结构，使开发人员能够轻松查找和组织代码、样式和资源文件。
+-   版本控制：使用版本控制系统（如Git）来跟踪和管理代码的变化，以便多个开发人员可以协同工作，并轻松回滚到以前的版本。
+-   自动化构建：使用构建工具（如Webpack、Grunt、Gulp等）来自动化任务，如代码编译、压缩、打包和资源优化，以减少手动工作和减小文件大小。
+-   模块化开发：采用模块化的代码结构，使开发人员能够更好地管理和复用代码，提高可维护性。
+-   包管理器：使用包管理工具（如npm、Yarn）来管理和安装项目依赖，确保开发环境的一致性。
+-   代码质量：引入代码风格检查工具（如ESLint、TSLint）和单元测试框架，以确保代码质量和可靠性。
+-   自动化部署：使用持续集成/持续部署（CI/CD）工具来自动化应用程序的部署和发布过程，以确保快速且可靠的交付。
+-   性能优化：优化前端性能，包括加载时间、资源压缩、懒加载等，以提供更好的用户体验。
+-   文档和注释：编写清晰的文档和代码注释，以便其他开发人员能够理解和使用你的代码。
+
+前端工程化的目标是使前端开发更高效、更可靠，并促使开发团队采用一致的最佳实践。它在现代Web开发中变得至关重要，特别是在大型和复杂的项目中，可以显著提高开发团队的生产力和代码质量。
+
 ### 【一】 创建项目
 
 ```sh
@@ -295,7 +313,6 @@ pnpm eslint --init
 
 运行 pnpm eslint --init 后，我们会发现，它给我们安装了一些依赖以及自动创建了文件.eslintrc.json
 
-
 #### 5.2 新增命令运行检查
 
 ```json
@@ -330,8 +347,6 @@ pnpm eslint --init
     },
 }
 ```
-
-
 
 ### 5.3 集成 Prettier
 
@@ -372,7 +387,7 @@ pnpm i prettier eslint-config-prettier eslint-plugin-prettier --save-dev
 // 8. pnpm i less less-loader -D
 ```
 
-#### 6.1  引入UI样式库
+#### 6.1 引入UI样式库
 
 注意：UI 库一般需要按需引入（下面以 element-plus 为例）
 
@@ -383,7 +398,6 @@ pnpm i vite-plugin-style-import --save-dev
 ```
 
 b. 修改 vite.config.ts
-
 
 ```ts
 import {
@@ -416,16 +430,20 @@ export default defineConfig({
 })
 ```
 
-###  [七] 使用 commitizen 规范git提交
+### [七] 使用 commitizen 规范git提交
+
 为了使团队多人协作更加的规范，所以需要每次在 git 提交的时候，做一次硬性规范提交，规范 git 的提交信息
 
-#### 7.1  安装 commitizen (交互式提交 + 自定义提示文案 + Commit规范)
+#### 7.1 安装 commitizen (交互式提交 + 自定义提示文案 + Commit规范)
+
 a. 安装
+
 ```sh
 pnpm install -D commitizen cz-conventional-changelog @commitlint/config-conventional @commitlint/cli commitlint-config-cz cz-customizable
 ```
 
 b. 配置package.json
+
 ```json
 {
   ...
@@ -487,29 +505,34 @@ export default {
         'body-leading-blank': [1, 'always'],
         'header-max-length': [0, 'always', 72],
     },
-};
-
+}
 ```
 
-
 d. 自定义提示则添加 .cz-config.js
+
 ```ts
 export default {
     types: [
-        {value: 'feature',  name: 'feature:  增加新功能'},
-        {value: 'bug',      name: 'bug:      测试反馈bug列表中的bug号'},
-        {value: 'fix',      name: 'fix:      修复bug'},
-        {value: 'ui',       name: 'ui:       更新UI'},
-        {value: 'docs',     name: 'docs:     文档变更'},
-        {value: 'style',    name: 'style:    代码格式(不影响代码运行的变动)'},
-        {value: 'perf',     name: 'perf:     性能优化'},
-        {value: 'refactor', name: 'refactor: 重构(既不是增加feature，也不是修复bug)'},
-	{value: 'release',  name: 'release:  发布'},
-	{value: 'deploy',   name: 'deploy:   部署'},
-        {value: 'test',     name: 'test:     增加测试'},
-        {value: 'chore',    name: 'chore:    构建过程或辅助工具的变动(更改配置文件)'},
-        {value: 'revert',   name: 'revert:   回退'},
-    	{value: 'build',    name: 'build:    打包'}
+        { value: 'feature', name: 'feature:  增加新功能' },
+        { value: 'bug', name: 'bug:      测试反馈bug列表中的bug号' },
+        { value: 'fix', name: 'fix:      修复bug' },
+        { value: 'ui', name: 'ui:       更新UI' },
+        { value: 'docs', name: 'docs:     文档变更' },
+        { value: 'style', name: 'style:    代码格式(不影响代码运行的变动)' },
+        { value: 'perf', name: 'perf:     性能优化' },
+        {
+            value: 'refactor',
+            name: 'refactor: 重构(既不是增加feature，也不是修复bug)',
+        },
+        { value: 'release', name: 'release:  发布' },
+        { value: 'deploy', name: 'deploy:   部署' },
+        { value: 'test', name: 'test:     增加测试' },
+        {
+            value: 'chore',
+            name: 'chore:    构建过程或辅助工具的变动(更改配置文件)',
+        },
+        { value: 'revert', name: 'revert:   回退' },
+        { value: 'build', name: 'build:    打包' },
     ],
     // override the messages, defaults are as follows
     messages: {
@@ -518,67 +541,66 @@ export default {
         subject: '请简要描述提交 message (必填):',
         body: '请输入详细描述(可选，待优化去除，跳过即可):',
         footer: '请输入要关闭的issue(待优化去除，跳过即可):',
-        confirmCommit: '确认使用以上信息提交？(y/n/e/h)'
+        confirmCommit: '确认使用以上信息提交？(y/n/e/h)',
     },
     allowCustomScopes: true,
     skipQuestions: ['body', 'footer'],
-    subjectLimit: 72
-};
+    subjectLimit: 72,
+}
 ```
 
-
 e. 执行验证
+
 ```
 npm run commit
 ```
 
 报错
+
 ```
 Instead change the require of .cz-config.js in /Users/yutianguo/Documents/outter/demo-mall/coding/vite-vue3/node_modules/.pnpm/find-config@1.0.0/node_modules/find-config/src/find-config.js to a dynamic import() which is available in all CommonJS modules.
 ```
 
+小问题插曲： 由于package.json 指定了模块为esmodule, git-cz 只支持commonjs规范，则需要使用`.cjs`作为文件类型标识。因此重命名为.cz-config.cjs 文件 和修改package.json
 
-小问题插曲： 由于package.json 指定了模块为esmodule, git-cz 只支持commonjs规范，则需要使用`.cjs`作为文件类型标识。因此重命名为.cz-config.cjs 文件 和修改package.json  
- 
 ```json
 {
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable":{
-      "config":"./.cz-config.cjs"
+    "config": {
+        "commitizen": {
+            "path": "node_modules/cz-customizable"
+        },
+        "cz-customizable": {
+            "config": "./.cz-config.cjs"
+        }
     }
-  }  
 }
 ```
 
-
 #### 7.2安装 husky
+
+![Husky工作原理](image.png)
 
 ```
 # 1.安装
 pnpm i husky lint-staged -D
 
-# 2.生成 .husky 的文件夹
-npx husky install
+# 2.生成 .husky 的文件夹 会在 .husky 目录下生成一个 pre-commit 脚本文件
+npx husky init
 
-# 3.添加 hooks，会在 .husky 目录下生成一个 pre-commit 脚本文件
-npx husky add .husky/pre-commit "npx --no-install lint-staged"
+# 3.修改 pre-commit 脚本为
+npx --no-install lint-staged
 
-# 4.添加 commit-msg
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
-
-# 5. 使用 `git commit -m "message"` 就会看到 hook 生效了。
+# 4. 使用 `git commit -m "message"` ,如果匹配到对应的js,ts就会看到 hook 生效了。
 
 ```
 
 添加配置 package.json
+
 ```json
 {
   ...
   "lint-staged": {
-    	"*.{js,ts}": [
+      "src/**/*.{ts,js,jsx,tsx,vue}": [
             "npm run eslint",
             "npm run prettier"
     	]
